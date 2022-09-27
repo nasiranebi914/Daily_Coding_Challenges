@@ -24,6 +24,13 @@ node4.next = node5;
 node5.next = node6;
 list = new LinkedList(node1);
 
+LinkedList.prototype.printList = function () {
+  let current = this.head;
+  while (current) {
+    console.log(current.data);
+    current = current.next;
+  }
+};
 // 1. Remove Dups
 LinkedList.prototype.removeDups = function () {
   let obj = {};
@@ -53,4 +60,43 @@ LinkedList.prototype.removeDups = function () {
   }
   return this.head;
 };
-console.log(list.removeDups());
+
+LinkedList.prototype.returnKthToLast = function (index) {
+  let counter = 0;
+  if (!this.head) {
+    return;
+  }
+  if (index === 0) {
+    return this.head;
+  }
+  let node = this.head;
+  while (node) {
+    if (counter === index) {
+      this.head = node;
+      return this.head;
+    }
+    node = node.next;
+    counter += 1;
+  }
+};
+
+LinkedList.prototype.deleteMiddleNode = function (node) {
+  if (node === null || node.next === null) {
+    return;
+  }
+  let nextNode = node.next;
+  node.data = nextNode.data;
+  node.next = nextNode.next;
+};
+
+LinkedList.prototype.partition = function (value) {
+  if (value === null) {
+    return;
+  }
+  let node = this.head;
+  while (node) {
+    if (node < value) {
+    }
+    node = node.next;
+  }
+};
